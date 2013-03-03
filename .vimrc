@@ -4,3 +4,5 @@ set number
 
 "colorscheme inkpot
 "colorscheme luminol
+
+autocmd VimEnter * NERDTree
