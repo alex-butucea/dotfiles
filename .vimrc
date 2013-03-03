@@ -1,4 +1,6 @@
 set tabstop=4
 set shiftwidth=4
-colorscheme inkpot
-colorscheme luminol
+set number
+
+"colorscheme inkpot
+"colorscheme luminol
