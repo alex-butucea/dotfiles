@@ -9,8 +9,9 @@ set background=dark
 
 "NERDTree Plugin
 autocmd VimEnter * NERDTree
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 "PHP Doc Plugin
-autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
-autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
-autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR> 
+autocmd FileType php inoremap <C-l> <ESC>:call PhpDocSingle()<CR>i
+autocmd FileType php nnoremap <C-l> :call PhpDocSingle()<CR>
+autocmd FileType php vnoremap <C-l> :call PhpDocRange()<CR> 
