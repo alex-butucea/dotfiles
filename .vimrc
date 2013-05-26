@@ -1,11 +1,8 @@
 set tabstop=4
 set shiftwidth=4
 set number
-
+set smartindent
 set background=dark
-
-"colorscheme inkpot
-"colorscheme luminol
 
 "NERDTree Plugin
 autocmd VimEnter * NERDTree
