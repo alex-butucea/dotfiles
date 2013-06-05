@@ -3,6 +3,7 @@ set shiftwidth=4
 set number
 set smartindent
 set background=dark
+set spell spelllang=en_gb
 
 "NERDTree Plugin
 autocmd VimEnter * NERDTree
