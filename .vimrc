@@ -1,6 +1,8 @@
 set tabstop=4
 set shiftwidth=4
 set number
+set expandtab
+set smarttab
 set smartindent
 set background=dark
 set spell spelllang=en_gb
