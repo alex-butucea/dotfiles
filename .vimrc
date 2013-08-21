@@ -8,7 +8,6 @@ set background=dark
 set spell spelllang=en_gb
 
 "NERDTree Plugin
-autocmd VimEnter * NERDTree
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 "PHP Doc Plugin
