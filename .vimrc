@@ -7,6 +7,9 @@ set smartindent
 set background=dark
 set spell spelllang=en_gb
 
+"Syntax highlight on buffer open
+autocmd VimEnter * source ~/.vim/syntax/mkd.vim
+
 "NERDTree Plugin
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
