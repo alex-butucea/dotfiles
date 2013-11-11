@@ -10,9 +10,6 @@ set spell spelllang=en_gb
 "Syntax highlight on buffer open
 autocmd FileType markdown source ~/.vim/syntax/mkd.vim
 
-"NERDTree Plugin
-nmap <silent> <C-n> :NERDTreeToggle<CR>
-
 "PHP Doc Plugin
 autocmd FileType php inoremap <C-l> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-l> :call PhpDocSingle()<CR>
