@@ -6,6 +6,7 @@ set smarttab
 set smartindent
 set background=dark
 set spell spelllang=en_gb
+set hlsearch
 
 "Syntax highlight on buffer open
 autocmd FileType markdown source ~/.vim/syntax/mkd.vim
