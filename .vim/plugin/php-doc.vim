@@ -95,7 +95,7 @@ let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "   $id$"
 let g:pdv_cfg_Author = "    Alex Butucea <alex826@gmail.com>"
-let g:pdv_cfg_Copyright = " 2013 Alex Butucea <alex826@gmail.com>"
+let g:pdv_cfg_Copyright = " 2014 Alex Butucea <alex826@gmail.com>"
 let g:pdv_cfg_License = "   The MIT License (MIT) {@link http://opensource.org/licenses/MIT}"
 
 let g:pdv_cfg_ReturnVal = "void"
