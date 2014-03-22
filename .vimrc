@@ -1,12 +1,22 @@
+"Indentation
 set tabstop=4
 set shiftwidth=4
-set number
 set expandtab
 set smarttab
 set smartindent
+
+"Presentation
+set number
+set relativenumber
 set background=dark
-set spell spelllang=en_gb
 set hlsearch
+set cursorline
+set cursorcolumn
+hi CursorColumn cterm=none ctermbg=yellow ctermfg=black guibg=yellow guifg=black
+hi CursorLine   cterm=none,underline ctermbg=none ctermfg=none guibg=none guifg=none
+
+"Misc
+set spell spelllang=en_gb
 
 "Syntax highlight on buffer open
 autocmd FileType markdown source ~/.vim/syntax/mkd.vim
