@@ -13,8 +13,8 @@ set hlsearch
 set cursorline
 set cursorcolumn
 set colorcolumn=80
-hi CursorColumn cterm=none ctermbg=yellow ctermfg=black guibg=yellow guifg=black
-hi CursorLine   cterm=none,underline ctermbg=none ctermfg=none guibg=none guifg=none
+hi CursorColumn cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
+hi CursorLine   cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
 
 "Encoding
 set encoding=utf-8
