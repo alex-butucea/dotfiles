@@ -12,6 +12,7 @@ set background=dark
 set hlsearch
 set cursorline
 set cursorcolumn
+set colorcolumn=80
 hi CursorColumn cterm=none ctermbg=yellow ctermfg=black guibg=yellow guifg=black
 hi CursorLine   cterm=none,underline ctermbg=none ctermfg=none guibg=none guifg=none
 
