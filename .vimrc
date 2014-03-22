@@ -15,6 +15,10 @@ set cursorcolumn
 hi CursorColumn cterm=none ctermbg=yellow ctermfg=black guibg=yellow guifg=black
 hi CursorLine   cterm=none,underline ctermbg=none ctermfg=none guibg=none guifg=none
 
+"Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
 "Misc
 set spell spelllang=en_gb
 
