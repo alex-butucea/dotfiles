@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.profile
 !.vim
 !.vimrc
 !README.md
