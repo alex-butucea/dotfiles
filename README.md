@@ -1,1 +1,1 @@
-Unix home directory containing various personalisation files and dotfiles.
+Homedir bits and bobs...exciting stuff.
