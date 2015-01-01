@@ -22,6 +22,7 @@ set fileencoding=utf-8
 
 "Misc
 set spell spelllang=en_gb
+set lazyredraw
 
 "Syntax highlight on buffer open
 autocmd FileType markdown source ~/.vim/syntax/mkd.vim
