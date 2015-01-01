@@ -11,3 +11,5 @@
 	prompt = false
 [merge]
 	tool = vimdiff
+[push]
+	default = simple
