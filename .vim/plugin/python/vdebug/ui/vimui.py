@@ -42,7 +42,7 @@ class Ui(vdebug.ui.interface.Ui):
             vim.command('silent tabnew')
             self.empty_buf_num = vim.eval('bufnr("%")')
             if existing_buffer:
-                vim.command('call vdebug:edit("%s")' % cur_buf_name)
+                vim.command('call Vdebug_edit("%s")' % cur_buf_name)
 
             self.tabnr = vim.eval("tabpagenr()")
 
@@ -230,7 +230,7 @@ class SourceWindow(vdebug.ui.interface.Window):
         self.file = file
         vdebug.log.Log("Setting source file: "+file,vdebug.log.Logger.INFO)
         self.focus()
-        vim.command('call vdebug:edit("%s")' % str(file).replace("\\", "\\\\"))
+        vim.command('call Vdebug_edit("%s")' % str(file).replace("\\", "\\\\"))
 
     def set_line(self,lineno):
         self.focus()
@@ -347,7 +347,8 @@ class Window(vdebug.ui.interface.Window):
         if self.buffer == None or len(dir(self.buffer)) == 0:
             return
         self.is_open = False
-        self.command('bwipeout ' + self.name)
+        if int(vim.eval('buffer_exists("'+self.name+'")')) == 1:
+            vim.command('bwipeout ' + self.name)
 
     def clean(self):
         """ clean all datas in buffer """
@@ -457,10 +458,10 @@ class StatusWindow(Window):
     def on_create(self):
         keys = vdebug.util.Keymapper()
         output = "Status: starting\nListening on port\nNot connected\n\n"
-        output += "Press %s to start debugging, " %(keys.run_key()) 
+        output += "Press %s to start debugging, " %(keys.run_key())
         output += "%s to stop/close. " %(keys.close_key())
         output += "Type :help Vdebug for more information."
-        
+
         self.write(output)
 
         self.command('setlocal syntax=debugger_status')
@@ -485,10 +486,10 @@ class StackGetResponseRenderer(ResponseRenderer):
         string = ""
         for s in stack:
             where = s.get('where') if s.get('where') else 'main'
-            file = vdebug.util.LocalFilePath(s.get('filename'))
+            file = vdebug.util.FilePath(s.get('filename'))
             line = "[%(num)s] %(where)s @ %(file)s:%(line)s" \
                     %{'num':s.get('level'),'where':where,\
-                    'file':str(file),'line':s.get('lineno')}
+                    'file':str(file.as_local()),'line':s.get('lineno')}
             string += line + "\n"
         return string
 
@@ -525,20 +526,23 @@ class ContextGetResponseRenderer(ResponseRenderer):
         return res
 
     def __create_tabs(self):
-        res = ""
+        res = []
         if self.contexts:
             for id,name in self.contexts.iteritems():
                 if self.current_context == id:
                     name = "*"+name
-                res += "[ %s ] " % name
-            res += "\n\n"
-        return res
+                res.append("[ %s ]" % name)
+        if res:
+            return " ".join(res) + "\n\n"
+        else:
+            return ""
 
     def __render_property(self,p,next_p,last = False,indent = 0):
-        line = "%(indent)s %(marker)s %(name)s = (%(type)s) %(value)s\n" \
+        line = "%(indent)s %(marker)s %(name)s = (%(type)s)%(value)s" \
                 %{'indent':"".rjust((p.depth * 2)+indent),\
-                'marker':self.__get_marker(p),'name':p.display_name,\
-                'type':p.type_and_size(),'value':p.value}
+                'marker':self.__get_marker(p),'name':p.display_name.encode('latin1'),\
+                'type':p.type_and_size(),'value': " " + p.value}
+        line = line.rstrip() + "\n"
 
         if vdebug.opts.Options.get('watch_window_style') == 'expanded':
             depth = p.depth
@@ -548,6 +552,9 @@ class ContextGetResponseRenderer(ResponseRenderer):
                     next_sep = "|"
                     num_spaces = depth * 2
                 elif depth > next_depth:
+                    if not p.is_last_child:
+                       line += "".rjust(depth * 2 +indent) + " |\n"
+                       line += "".rjust(depth * 2 +indent) + " ...\n"
                     next_sep = "/"
                     num_spaces = (depth * 2) - 1
                 else:
@@ -556,6 +563,9 @@ class ContextGetResponseRenderer(ResponseRenderer):
 
                 line += "".rjust(num_spaces+indent) + " " + next_sep + "\n"
             elif depth > 0:
+                if not p.is_last_child:
+                   line += "".rjust(depth * 2 +indent) + " |\n"
+                   line += "".rjust(depth * 2 +indent) + " ...\n"
                 line += "".rjust((depth * 2) - 1 + indent) + " /" + "\n"
         return line
 

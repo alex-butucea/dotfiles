@@ -4,6 +4,7 @@ import vim
 import re
 import os
 import urllib
+import time
 
 class Keymapper:
     """Map and unmap key commands for the Vim user interface.
@@ -12,8 +13,7 @@ class Keymapper:
     exclude = ["run","set_breakpoint","eval_visual"]
 
     def __init__(self):
-        self.keymaps = vim.eval("g:vdebug_keymap")
-        self.leader = vim.eval("g:vdebug_leader_key")
+        self._reload_keys()
         self.is_mapped = False
         self.existing = []
 
@@ -27,6 +27,7 @@ class Keymapper:
         if self.is_mapped:
             return
         self._store_old_map()
+        self._reload_keys()
         for func in self.keymaps:
             if func not in self.exclude:
                 key = self.keymaps[func]
@@ -34,6 +35,10 @@ class Keymapper:
                     (self.leader,key,func)
                 vim.command(map_cmd)
         self.is_mapped = True
+
+    def _reload_keys(self):
+        self.keymaps = vim.eval("g:vdebug_keymap")
+        self.leader = vim.eval("g:vdebug_leader_key")
 
     def _store_old_map(self):
         vim.command('let tempfile=tempname()')
@@ -81,8 +86,10 @@ class FilePath:
             len(filename) == 0:
             raise FilePathError("Missing or invalid file name")
         filename = urllib.unquote(filename)
-        if filename.startswith('file://'):
-            filename = filename[7:]
+        if filename.startswith('file:'):
+            filename = filename[5:]
+            if filename.startswith('///'):
+                filename = filename[2:]
 
         p = re.compile('^/?[a-zA-Z]:')
         if p.match(filename):
@@ -101,7 +108,7 @@ class FilePath:
         ret = f
         if ret[2] == "/":
             ret = ret.replace("/","\\")
-        
+
         if vdebug.opts.Options.isset('path_maps'):
             for remote, local in vdebug.opts.Options.get('path_maps', dict).items():
                 if remote in ret:
@@ -118,8 +125,6 @@ class FilePath:
         Uses the "local_path" and "remote_path" options.
         """
         ret = f
-        if ret[2] == "\\":
-            ret = ret.replace("\\","/")
 
         if vdebug.opts.Options.isset('path_maps'):
             for remote, local in vdebug.opts.Options.get('path_maps', dict).items():
@@ -129,6 +134,10 @@ class FilePath:
                             vdebug.log.Logger.DEBUG)
                     ret = ret.replace(local,remote)
                     break
+
+        if ret[2] == "\\":
+            ret = ret.replace("\\","/")
+
         if self.is_win:
             return "file:///"+ret
         else:
@@ -194,6 +203,7 @@ class InputStream:
     def probe(self):
         try:
             vim.eval("getchar(0)")
+            time.sleep(0.1)
         except: # vim.error
             raise UserInterrupt()
 
