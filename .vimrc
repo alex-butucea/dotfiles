@@ -24,6 +24,9 @@ set fileencoding=utf-8
 set spell spelllang=en_gb
 set lazyredraw
 
+"Disable ELP command to make :E unambiguous
+let g:loaded_logipat = 1
+
 "Syntax highlight on buffer open
 autocmd FileType markdown source ~/.vim/syntax/mkd.vim
 
