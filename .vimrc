@@ -39,3 +39,6 @@ autocmd FileType php vnoremap <C-l> :call PhpDocRange()<CR>
 autocmd FileType php setlocal makeprg=php\ -l\ %
 autocmd FileType php nnoremap <C-m> :update<cr>:silent make<bar>redraw!<bar>cc<bar>cwindow<cr>
 autocmd FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l,%-GErrors\ parsing\ %f,%-G
+
+" Use real tabs for Makefile indentation
+autocmd FileType make set expandtab!
