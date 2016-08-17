@@ -40,5 +40,7 @@ autocmd FileType php setlocal makeprg=php\ -l\ %
 autocmd FileType php nnoremap <C-m> :update<cr>:silent make<bar>redraw!<bar>cc<bar>cwindow<cr>
 autocmd FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l,%-GErrors\ parsing\ %f,%-G
 
+autocmd FileType xt set nospell
+
 " Use real tabs for Makefile indentation
 autocmd FileType make set expandtab!
