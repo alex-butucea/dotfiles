@@ -24,6 +24,15 @@ set fileencoding=utf-8
 set spell spelllang=en_gb
 set lazyredraw
 
+"Enable better java syntax highlighting
+let java_highlight_all=1
+let java_space_errors=1
+let java_comment_strings=1
+let java_highlight_functions="indent"
+let java_highlight_debug=1
+let java_mark_braces_in_parens_as_errors=1
+let java_highlight_functions=1
+
 "Disable ELP command to make :E unambiguous
 let g:loaded_logipat = 1
 
