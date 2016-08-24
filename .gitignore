@@ -2,6 +2,7 @@
 !.gitignore
 !.gitconfig
 !.profile
-!.vim
 !.vimrc
+!.vim
 !README.md
+!.php
