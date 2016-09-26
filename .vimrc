@@ -44,12 +44,14 @@ autocmd FileType php inoremap <C-l> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-l> :call PhpDocSingle()<CR>
 autocmd FileType php vnoremap <C-l> :call PhpDocRange()<CR> 
 
-"PHP Linting
-autocmd FileType php setlocal makeprg=php\ -l\ %
-autocmd FileType php nnoremap <C-m> :update<cr>:silent make<bar>redraw!<bar>cc<bar>cwindow<cr>
-autocmd FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l,%-GErrors\ parsing\ %f,%-G
-
 autocmd FileType xt set nospell
 
 " Use real tabs for Makefile indentation
 autocmd FileType make set expandtab!
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php']
