@@ -44,10 +44,10 @@ autocmd FileType php inoremap <C-l> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-l> :call PhpDocSingle()<CR>
 autocmd FileType php vnoremap <C-l> :call PhpDocRange()<CR> 
 
-autocmd FileType xt set nospell
+autocmd FileType xt setlocal nospell
 
 " Use real tabs for Makefile indentation
-autocmd FileType make set expandtab!
+autocmd FileType make setlocal expandtab!
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
