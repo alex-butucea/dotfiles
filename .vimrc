@@ -44,6 +44,7 @@ autocmd FileType php inoremap <C-l> <ESC>:call PhpDocSingle()<CR>i
 autocmd FileType php nnoremap <C-l> :call PhpDocSingle()<CR>
 autocmd FileType php vnoremap <C-l> :call PhpDocRange()<CR> 
 
+" Disable spellcheck in xdebug trace files
 autocmd FileType xt setlocal nospell
 
 " Use real tabs for Makefile indentation
