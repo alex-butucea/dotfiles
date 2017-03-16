@@ -13,6 +13,7 @@
 	tool = vimdiff
 [push]
 	default = simple
+	recurseSubmodules = on-demand
 [alias]
 	co = checkout
 	br = branch
@@ -21,3 +22,5 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	di = diff
+[status]
+	submodulesummary = 1
