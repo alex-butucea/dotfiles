@@ -56,3 +56,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ['php']
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['php'],
+                           \ 'passive_filetypes': ['sass', 'java'] }
