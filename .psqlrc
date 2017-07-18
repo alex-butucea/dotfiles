@@ -1,0 +1,4 @@
+\x auto
+\timing
+\set VERBOSITY verbose
+\set HISTCONTROL ignoredups
