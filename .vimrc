@@ -13,6 +13,8 @@ set hlsearch
 set cursorline
 set cursorcolumn
 set colorcolumn=80
+set showtabline=2
+set laststatus=2
 hi CursorColumn cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
 hi CursorLine   cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
 
