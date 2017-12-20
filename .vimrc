@@ -15,8 +15,8 @@ set cursorcolumn
 set colorcolumn=80
 set showtabline=2
 set laststatus=2
-hi CursorColumn cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
-hi CursorLine   cterm=none ctermbg=black ctermfg=none guibg=black guifg=none
+hi CursorColumn cterm=none ctermbg=black guibg=black
+hi CursorLine   cterm=none ctermbg=black guibg=black
 
 "Encoding
 set encoding=utf-8
