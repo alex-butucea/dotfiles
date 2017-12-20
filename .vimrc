@@ -17,10 +17,10 @@ set showtabline=2
 set laststatus=2
 hi CursorColumn cterm=bold gui=bold ctermbg=black guibg=black
 hi CursorLine   cterm=bold gui=bold
-hi SpellBad     ctermfg=lightred     ctermbg=darkred     guifg=lightred     guibg=darkred
-hi SpellLocal   ctermfg=lightyellow  ctermbg=darkyellow  guifg=lightyellow  guibg=darkyellow
-hi SpellCap     ctermfg=lightmagenta ctermbg=darkmagenta guifg=lightmagenta guibg=darkmagenta
-hi SpellRare    ctermfg=lightblue    ctermbg=darkblue    guifg=lightblue    guibg=darkblue
+hi SpellBad     ctermfg=white guifg=white ctermbg=darkred     guibg=darkred
+hi SpellLocal   ctermfg=white guifg=white ctermbg=darkyellow  guibg=darkyellow
+hi SpellCap     ctermfg=white guifg=white ctermbg=darkmagenta guibg=darkmagenta
+hi SpellRare    ctermfg=white guifg=white ctermbg=darkblue    guibg=darkblue
 
 "Encoding
 set encoding=utf-8
