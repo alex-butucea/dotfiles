@@ -15,8 +15,8 @@ set cursorcolumn
 set colorcolumn=80
 set showtabline=2
 set laststatus=2
-hi CursorColumn cterm=bold ctermbg=black gui=bold guibg=black
-hi CursorLine   cterm=bold ctermbg=none  gui=bold guibg=none
+hi CursorColumn cterm=bold gui=bold ctermbg=black guibg=black
+hi CursorLine   cterm=bold gui=bold
 hi SpellBad     ctermfg=lightred     ctermbg=darkred     guifg=lightred     guibg=darkred
 hi SpellLocal   ctermfg=lightyellow  ctermbg=darkyellow  guifg=lightyellow  guibg=darkyellow
 hi SpellCap     ctermfg=lightmagenta ctermbg=darkmagenta guifg=lightmagenta guibg=darkmagenta
