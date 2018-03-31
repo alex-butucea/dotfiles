@@ -56,6 +56,10 @@ autocmd FileType xt setlocal nospell
 " Use real tabs for Makefile indentation
 autocmd FileType make setlocal expandtab!
 
+" Use standard js 2 space indentation
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType vue setlocal shiftwidth=2 tabstop=2
+
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
