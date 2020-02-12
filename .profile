@@ -48,6 +48,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Increase Node.js heap size for hungry Jest suites
+NODE_OPTIONS="--max_old_space_size=2048"
+
 EDITOR="/opt/sfw/bin/vim"
 SVN_EDITOR=vim
 
@@ -57,6 +60,7 @@ NO_COLOUR="\[\033[0m\]"
 
 PS1="[$LIGHT_GREEN\u$GREEN@$LIGHT_GREEN\H$GREEN \w$NO_COLOUR]$ "
 
+export NODE_OPTIONS
 export EDITOR
 export SVN_EDITOR
 export PS1
